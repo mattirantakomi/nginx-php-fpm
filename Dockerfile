@@ -29,4 +29,8 @@ RUN apt-get update && apt-get install -y php8.0 php8.0-bcmath php8.0-bz2 php8.0-
     php8.0-pgsql php8.0-pspell php8.0-readline php8.0-snmp php8.0-soap php8.0-sqlite3 php8.0-sybase \
     php8.0-tidy php8.0-xml php8.0-xsl php8.0-zip
 
-CMD ["tail","-f","/dev/null"]
+RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
+
+COPY layers/ /
+
+ENTRYPOINT ["/entrypoint.sh"]
