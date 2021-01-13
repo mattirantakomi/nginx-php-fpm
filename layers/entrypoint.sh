@@ -6,7 +6,7 @@ start(){
 }
 
 stop(){
-    kill $(cat /run/php/php8.0-fpm.pid)
+    kill $(cat /run/php8.0-fpm.pid)
     kill $(cat /run/nginx.pid)
 }
 
