@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 
-start(){
+_start(){
+    echo "Starting php-fpm"
     /usr/sbin/php-fpm8.0
+    echo "Starting nginx"
     /usr/sbin/nginx
 }
 
-stop(){
+_stop(){
     echo "Stopping nginx"
     /usr/sbin/nginx -s stop
     echo "Stopping php-fpm"
@@ -16,13 +18,6 @@ stop(){
     exit 0
 }
 
-trap "echo TERM" TERM
-trap "echo HUP" HUP
-trap "echo INT" INT
-trap "echo QUIT" QUIT
-trap "echo USR1" USR1
-trap "echo USR2" USR2
+trap _stop TERM HUP INT QUIT USR1 USR2
 
-trap stop TERM HUP INT QUIT USR1 USR2
-
-start
+_start
