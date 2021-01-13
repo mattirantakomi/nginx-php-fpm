@@ -2,6 +2,10 @@
 
 _term() {
   echo "TERM"
+  echo "Killing php-fpm"
+  kill $(cat /run/php8.0-fpm.pid)
+  echo "Killing nginx"
+  /usr/sbin/nginx -s stop
   exit 0
 }
 
