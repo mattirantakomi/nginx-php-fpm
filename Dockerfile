@@ -5,7 +5,7 @@ ENV TZ=Europe/Helsinki
 
 RUN apt-get update && apt-get install -y curl gnupg2 ca-certificates lsb-release \
     wget curl nano rsync net-tools screen dnsutils apt-transport-https \
-    software-properties-common unzip wget git bc tzdata locales \
+    software-properties-common unzip wget git bc tzdata locales mysql-client \
     && rm -rf /var/lib/apt/lists/*
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
@@ -27,7 +27,7 @@ RUN apt-get update && apt-get install -y php8.0 php8.0-bcmath php8.0-bz2 php8.0-
     php8.0-common php8.0-curl php8.0-dba php8.0-enchant php8.0-fpm php8.0-gd php8.0-gmp php8.0-imap \
     php8.0-interbase php8.0-intl php8.0-ldap php8.0-mbstring php8.0-mysql php8.0-odbc php8.0-opcache \
     php8.0-pgsql php8.0-pspell php8.0-readline php8.0-snmp php8.0-soap php8.0-sqlite3 php8.0-sybase \
-    php8.0-tidy php8.0-xml php8.0-xsl php8.0-zip
+    php8.0-tidy php8.0-xml php8.0-xsl php8.0-zip && rm -rf /var/lib/apt/lists/*
 
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/nginx/error.log
 
