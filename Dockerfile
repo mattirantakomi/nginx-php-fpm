@@ -33,6 +33,8 @@ RUN ln -sf /dev/stdout /var/log/nginx/access.log && ln -sf /dev/stderr /var/log/
 
 RUN mkdir -p /var/cache/nginx /run /var/run && chmod -R 777 /var/cache/nginx /run /var/run
 
+RUN useradd -d /var/www -m -s /bin/bash -U -u 1000 webadmin
+
 COPY layers/ /
 
 ENTRYPOINT ["/entrypoint.sh"]
